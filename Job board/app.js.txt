@@ -1,0 +1,23 @@
+import React, { useState } from 'react';
+import JobPostForm from './JobPostForm';
+import JobList from './JobList';
+import ApplyForm from './ApplyForm';
+
+const App = () => {
+  const [jobs, setJobs] = useState([]);
+
+  const handleNewJobPost = (job) => {
+    setJobs([...jobs, job]);
+  };
+
+  return (
+    <div>
+      <h1>Job Board</h1>
+      <JobPostForm onNewJobPost={handleNewJobPost} />
+      <JobList jobs={jobs} />
+      <ApplyForm />
+    </div>
+  );
+};
+
+export default App;

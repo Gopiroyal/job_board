@@ -1,0 +1,34 @@
+import React, { useState } from 'react';
+
+const JobPostForm = ({ onNewJobPost }) => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onNewJobPost({ title, description });
+    setTitle('');
+    setDescription('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Job Title"
+        required
+      />
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Job Description"
+        required
+      />
+      <button type="submit">Post Job</button>
+    </form>
+  );
+};
+
+export default JobPostForm;

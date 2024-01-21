@@ -1,0 +1,29 @@
+import React, { useState } from 'react';
+
+const ApplyForm = () => {
+  const [applicantName, setApplicantName] = useState('');
+  // More fields can be added as needed
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle the application submission
+    alert(`Application submitted by ${applicantName}`);
+    setApplicantName('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={applicantName}
+        onChange={(e) => setApplicantName(e.target.value)}
+        placeholder="Your Name"
+        required
+      />
+      {/* Additional fields like email, resume upload, etc. */}
+      <button type="submit">Apply</button>
+    </form>
+  );
+};
+
+export default ApplyForm;
